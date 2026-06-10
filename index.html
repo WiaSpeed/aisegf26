@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AISEGF’26</title>
+  <style>
+    :root{
+      --bg:#061426;--bg2:#0b2440;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);
+      --text:#f8fbff;--muted:#b8c7d9;--accent:#25d0a6;--accent2:#f6c453;--blue:#4aa3ff;
+      --shadow:0 22px 70px rgba(0,0,0,.28);--r:24px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+      color: 0;
+      line-height:1.6;
+      background:
+        linear-gradient(rgba(6, 20, 38, 0), rgba(6, 20, 38, 0)),
+        url("hero.png");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+    }
+    a{color:inherit;text-decoration:none}.wrap{width:min(1180px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:50;background-image:url(/hero.png);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:20px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:.4px}
+    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--blue));display:grid;place-items:center;color:#04101d;box-shadow:0 10px 30px rgba(37,208,166,.25)}
+    .links{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color: #4f0232;}.links a:hover{color:#fff}
+
+    .menu-btn{display:none;background:rgba(255,255,255,.09);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:9px 12px;font-size:20px;cursor:pointer}
+    .links a{
+      padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid transparent;
+    color: #3d1e10;
+    font: inherit;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: 600;
+    }
+    .links a:hover{color:#fff;border-color:var(--line);background:rgba(255,255,255,.12)}
+    .links .important-link{background:linear-gradient(135deg,var(--accent2),#ffe09a);color:#1d1604;font-weight:900}
+    @media(max-width:1050px){
+      .menu-btn{display:block}
+      .links{display:none;position:absolute;left:4%;right:4%;top:76px;padding:16px;background:rgba(6,20,38,.96);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+      .links.show{display:flex}
+      .links a{width:100%;text-align:center}
+    }
+
+
+    .dropdown{position:relative;display:inline-flex}
+    .dropdown-btn{
+      padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid transparent;
+    color: #3d1e10;
+    font: inherit;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: 600;
+    }
+    .dropdown-btn:hover{color:#fff;border-color:var(--line);background:rgba(255,255,255,.12)}
+    .dropdown-content{position:absolute;top:115%;left:0;min-width:220px;display:none;flex-direction:column;gap:8px;padding:10px;border-radius:18px;background:rgba(6,20,38,.98);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(16px);z-index:100}
+    .dropdown-content a{display:block;padding:10px 12px;border-radius:12px;background:transparent;border:0;text-align:left}
+    .dropdown-content a:hover{background:rgba(255,255,255,.1)}
+    .dropdown:hover .dropdown-content{display:flex}
+    @media(max-width:1050px){
+      .dropdown{display:block;width:100%}
+      .dropdown-btn{width:100%;text-align:center}
+      .dropdown-content{position:static;display:flex;min-width:100%;margin-top:8px;background:rgba(255,255,255,.04);box-shadow:none;border-radius:14px}
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:88px 0 54px;
+      position:relative;
+      overflow:hidden;
+      background:transparent
+    }
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:center}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.08);padding:8px 13px;border-radius:999px;color:#dff7ff;font-size:13px;margin-bottom:18px}
+    h1{font-size:clamp(48px,8vw,96px);line-height:.9;margin:0 0 20px;letter-spacing:-4px;color: #bb3b0f;}
+    h1 span{display:block;color:#bb3b0f}
+    
+    
+    .subtitle{font-size:clamp(18px,2vw,24px);color: #4f0232;max-width:760px;margin:0 0 26px;
+    
+    color: #000000;
+    padding: 20px;
+    background: #f0f8ffdb;
+    border-radius: 11px;
+    }
+    
+    
+    .meta{color: #4f0232;font-weight:600;margin-bottom:26px}.btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:13px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.09);font-weight:800}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#7af3d2);color:#04101d;border:0}.btn.gold{background:linear-gradient(135deg,var(--accent2),#ffe09a);color:#1d1604;border:0}
+    .glass{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.stat{padding:22px}.stat b{font-size:36px;color:#fff}.stat p{margin:4px 0 0;color: #4f0232;}
+    section{padding:62px 0}.section-head{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:24px}
+    .kicker{color:var(--accent);font-weight:900;text-transform:uppercase;font-size:13px;letter-spacing:1.5px}h2{font-size:clamp(30px,4vw,52px);line-height:1;margin:6px 0 0;letter-spacing:-1.5px}.lead{color: #4f0232;max-width:720px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px}.card h3{margin:0 0 10px;font-size:21px}.card p,.card li{color: #4f0232;}.card ul{padding-left:20px;margin:12px 0 0}
+    .about{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.chip{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#e8f3ff;background:rgba(255,255,255,.06)}
+    .poster{min-height:520px;display:grid;place-items:center;text-align:center;background:
+      linear-gradient(160deg,rgba(37,208,166,.16),rgba(74,163,255,.14)),
+      repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 14px);border:1px dashed rgba(255,255,255,.28)}
+    .poster h3{font-size:46px;line-height:1;margin:0}.tabs{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}.tab{cursor:pointer;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.07);color: #4f0232;font-weight:800}.tab.active{background:var(--accent);color:#04101d}
+    .agenda{display:none}.agenda.active{display:block}.table{overflow:auto}.row{display:grid;grid-template-columns:150px 1fr 1.3fr;gap:12px;padding:14px;border-top:1px solid var(--line)}.row:first-child{border-top:0}.time{color:var(--accent2);font-weight:900}
+    .people{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.person{text-align:center;padding:18px}.avatar{width:86px;height:86px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--blue));display:grid;place-items:center;color:#061426;font-size:30px;font-weight:900}.role{color: #4f0232;font-size:14px}
+    .partners{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.partner{min-height:120px;display:grid;place-items:center;text-align:center;padding:16px;font-weight:900}
+    .committee{columns:3 240px;column-gap:18px}.member{break-inside:avoid;margin:0 0 10px;padding:13px 14px;border-radius:14px;background:rgba(255, 255, 255, 0.815);border:1px solid var(--line)}.member small{display:block;color: #4f0232;}
+    .venue{display:grid;grid-template-columns:1fr 1fr;gap:18px}.map{min-height:310px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(246,196,83,.16),rgba(37,208,166,.12));font-size:54px}
+    footer{border-top:1px solid var(--line);padding:34px 0;color: #4f0232;background:rgba(0,0,0,.35)}.foot{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:20px}.top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:0;border-radius:50%;background:var(--accent);color:#04101d;font-weight:900;cursor:pointer;display:none}
+    @media(max-width:900px){.hero-grid,.about,.venue{grid-template-columns:1fr}.grid,.people,.partners{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr}.row{grid-template-columns:1fr}h1{letter-spacing:-2px}}
+
+    .registration-card .lead{max-width:100%;margin-top:0;color: #4f0232;}
+    .registration-table-wrap{overflow:auto;margin-top:20px;border-radius:18px;border:1px solid var(--line)}
+    .registration-table{width:100%;border-collapse:collapse;min-width:720px;background:rgba(255,255,255,.04)}
+    .registration-table th{padding:18px 16px;text-align:center;background:rgba(74,163,255,.24);color:#0805c2;font-size:16px;border-right:1px solid var(--line)}
+    .registration-table th:last-child{border-right:0}
+    .registration-table th span{display:block;margin-top:6px;color:#012b06;font-size:13px;font-weight:500;font-style:italic}
+    .registration-table td{padding:18px 16px;border-top:1px solid var(--line);border-right:1px solid var(--line);color:#004ca0;background:rgba(255,255,255,.03)}
+    .registration-table td:last-child{border-right:0}
+    .registration-table td:first-child{font-weight:800;text-align:left}
+    .registration-table td:not(:first-child){text-align:center;color:#a50d0d}
+
+
+    @media(max-width:768px){
+      body{background-attachment:scroll}
+    }
+
+    @media(max-width:560px){.grid,.people,.partners,.stats{grid-template-columns:1fr}.hero{padding-top:52px}}
+  </style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#home">
+        <img src="logo.jpeg" width="130">
+      </a>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <div class="links" id="navLinks">
+
+        <div class="dropdown">
+          <button class="dropdown-btn"><a href="#">Home ▾</a></button>
+          <div class="dropdown-content">
+            <a href="#context">SCOPE</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropdown-btn">CALL FOR PAPER ▾</button>
+          <div class="dropdown-content">
+            <a href="#themes">Thematic Tracks</a>
+            <a href="#submission">SUBMISSION</a>
+            <a href="#publication">PUBLICATION</a>
+          </div>
+        </div>
+
+        <a href="#speakers">SPEAKERS</a>
+
+        <a href="#committee">COMMITTEES</a>
+
+        <a href="#programme">Programme & Chairs</a>
+
+        <a href="#registration">REGISTRATION</a>
+
+        <a href="#venue">Venue</a>
+
+        <a href="#contactus">Contact Us</a>
+
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="pill">FIRST EDITION</div>
+          <p class="meta">Higher School of Technology · Essaouira, Maroc</p>
+          <h1>AISEGF<span>’26</span></h1>
+          <p class="subtitle">International Interdisciplinary Conference on Artificial Intelligence for Sustainable
+            Economy and Green Finance</p>
+          <p class="meta"> Higher School of Technology, Essaouira · <b>October 22–24, 2026</b></p>
+          <div class="btns">
+            <a class="btn primary" href="#registration">Register now →</a>
+            <a class="btn gold" href="#submission">Submit abstract/poster →</a>
+            <a class="btn" href="#programme">View the program</a>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat glass"><b>22–24</b>
+            <p>Octobre 2026</p>
+          </div>
+          <div class="stat glass"><b>8</b>
+            <p>THEMATIC TRACKS</p>
+          </div>
+          <div class="stat glass"><b>30 June</b>
+            <p>Submission deadline</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="context">
+      <div class="wrap">
+        <div class="glass card">
+          <span class="kicker">Scope of the Conference</span>
+          <h2>AI for Sustainable Economy & Green Finance</h2>
+          <p class="lead">The International Interdisciplinary Conference on AI for Sustainable Economy and Green Finance
+            (AISEGF’26) is conceived as a premier forum for researchers, scholars, policymakers, industry practitioners,
+            and doctoral students from across the globe. The conference seeks to catalyse high-calibre,
+            interdisciplinary dialogue at the intersection of artificial intelligence, sustainable economic development,
+            and green financial innovation.
+            AISEGF’26 explicitly encourages contributions that transcend traditional disciplinary boundaries.
+            Submissions are welcomed from—but not limited to—the fields of computer science, data science, financial
+            economics, environmental economics, public policy, management, operations research, and development studies.
+            Theoretical, empirical, methodological, and applied contributions are equally valued, as are works that
+            foreground the specific conditions and aspirations of emerging territories.
+            AISEGF’26 is jointly organised under the auspices of LIRSEG, ENCG Kenitra (Ibn Tofail University) and is
+            held in conjunction with the International Conference on AI, Robotics, and Cybersecurity for Emerging
+            Technologies (AIRCET), creating a rich, multi-institutional ecosystem of scholarly exchange.</p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="themes">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Topics & Tracks</span>
+            <h2>Thematic Tracks</h2>
+          </div>
+        </div>
+
+        <div class="grid">
+
+          <div class="glass card">
+            <h3>Track 1</h3>
+            <p><b>Artificial Intelligence and Explainability in Finance</b></p>
+            <p>As AI models become increasingly embedded in credit scoring, algorithmic trading, fraud detection, and
+              portfolio management, the demand for transparency and interpretability grows ever more pressing. This
+              track welcomes research on explainable AI (XAI) for financial decision-making, the deployment of deep
+              learning and reinforcement learning in asse...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 2</h3>
+            <p><b>Green Finance, Climate Risk, and Sustainable Investment</b></p>
+            <p>The architecture of global finance is undergoing a profound structural transformation as climate risk is
+              repriced across asset classes and jurisdictions. This track invites contributions on green bond
+              optimisation and sustainable debt instruments, carbon market modelling and emissions trading dynamics,
+              climate risk forecasting using AI and machine ...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 3</h3>
+            <p><b>AI-Driven ESG Analytics and Responsible Reporting</b></p>
+            <p>The credibility crisis in ESG reporting—marked by rating divergence, greenwashing scandals, and data
+              opacity—has elevated the role of artificial intelligence as both a diagnostic and corrective instrument.
+              This track encourages submissions on AI-powered ESG scoring and rating harmonisation, satellite imagery
+              and alternative data for environmental m...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 4</h3>
+            <p><b>Sustainable FinTech, Digital Finance, and Financial Inclusion</b></p>
+            <p>Financial technology is reshaping the contours of inclusion, democratising access to credit, insurance,
+              and investment across populations historically underserved by formal banking systems. This track seeks
+              contributions on mobile money ecosystems and AI-enabled microfinance, decentralised finance (DeFi) and
+              tokenised green assets, digital green fi...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 5</h3>
+            <p><b>Circular Economy, IoT, and Intelligent Resource Management</b></p>
+            <p>The transition from linear to circular economic models demands radical innovation in how resources are
+              tracked, valued, and redeployed. This track invites papers on AI and IoT applications for circular economy
+              monitoring, smart waste management and resource recovery systems, renewable energy financing and grid
+              optimisation, the intersection of digi...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 6</h3>
+            <p><b>Quantitative Methods, Econometrics, and Data Science for Sustainable Development</b></p>
+            <p>Rigorous quantitative scholarship remains indispensable for advancing evidence-based policy in
+              sustainability and finance. This track welcomes contributions on applied econometrics and causal inference
+              for impact assessment, big data analytics and data mining for economic and financial modelling, stochastic
+              modelling and actuarial science for clima...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 7</h3>
+            <p><b>Management, Governance, and Territorial Development in Emerging Economies</b></p>
+            <p>Emerging territories face distinctive governance challenges as they seek to harness technological
+              transformation while safeguarding social cohesion and ecological integrity. This track invites research on
+              sustainable supply chain management and logistics optimisation, digital transformation of public
+              administration and smart governance, strategic m...</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Track 8</h3>
+            <p><b>AI, Energy, and Digital Infrastructure for a Just Transition</b></p>
+            <p>The exponential growth of AI workloads is placing unprecedented demands on energy systems, even as the
+              transition to clean energy accelerates. This track encourages contributions on the environmental footprint
+              of AI and digital infrastructure, green data center design and renewable-powered computing, AI for smart
+              grid management and energy storage,...</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section id="submission">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Submission</span>
+            <h2>Conference Timeline</h2>
+          </div>
+        </div>
+
+        <div class="glass card">
+          <table style="width:100%;font-size:18px;border-collapse:collapse">
+            <tr>
+              <td style="padding:12px">Paper Submission Deadline</td>
+              <td style="padding:12px"><b>June 30, 2026</b></td>
+            </tr>
+            <tr>
+              <td style="padding:12px">Acceptance Notification</td>
+              <td style="padding:12px"><b>July 10, 2026</b></td>
+            </tr>
+            <tr>
+              <td style="padding:12px">Camera-Ready Submission</td>
+              <td style="padding:12px"><b>July 30, 2026</b></td>
+            </tr>
+            <tr>
+              <td style="padding:12px">Registration Deadline</td>
+              <td style="padding:12px"><b>July 30, 2026</b></td>
+            </tr>
+            <tr>
+              <td style="padding:12px">Conference Dates</td>
+              <td style="padding:12px"><b>October 22–24, 2026</b></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="publication">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Publication</span>
+            <h2>Publication</h2>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="glass card">
+            <h3>Peer Review</h3>
+            <p>All submissions will undergo a rigorous double-blind peer review by members of the international
+              scientific committee.</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Conference Proceedings</h3>
+            <p>Accepted papers will be scheduled for oral presentation and included in the official conference
+              proceedings.</p>
+          </div>
+
+          <div class="glass card">
+            <h3>Scopus Journal</h3>
+            <p>A selection of outstanding contributions will be invited for publication in a special issue of a
+              Scopus-indexed journal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <section id="speakers">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Speakers</span>
+            <h2>Key speakers</h2>
+          </div>
+        </div>
+        <div class="people" id="people"></div>
+      </div>
+    </section>
+
+
+    <section id="committee">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Committees</span>
+            <h2>Scientific Committee</h2>
+          </div>
+        </div>
+
+        <div class="committee" id="scientificCommittee">
+          <div class="member"><b>Prof. Azidine Guezzaz</b><small>Higher School of Technics, Essaouira, Cadi Ayyad University, Morocco</small></div>
+          <div class="member"><b>Prof. Mourade Azerour</b><small>Faculty of Technics and Sciences, Errachidia, Moulay Ismail University, Morocco</small></div>
+          <div class="member"><b>Prof. Jamal Mabrouki</b><small>Faculty of Sciences, Mohammed V University, Rabat, Morocco</small></div>
+          <div class="member"><b>Prof. Said Benkirane</b><small>Higher School of Technics, Cadi Ayyad University, Morocco</small></div>
+          <div class="member"><b>Prof. Mouaad Mohy-Eddine</b><small>National School of Arts and Metiers, Hassan II University, Casablanca, Morocco</small></div>
+          <div class="member"><b>Prof. Abdellah Aberda</b><small>Faculty of Law, Economics, and Social Science, Settat, Hassan 1st University, Morocco</small></div>
+          <div class="member"><b>Prof. Lhoucine Ikkou</b><small>Faculty of Economics and Management, Guelmim, Ibn Zohr University, Morocco</small></div>
+          <div class="member"><b>Prof. Omar Zirari</b><small>Faculty of Law, Economics, and Social Science, Settat, University Hassan 1st, Morocco</small></div>
+          <div class="member"><b>Prof. Mohamed Behnassi</b><small>Faculty of Law, Economics, and Social Science, Agadir, Ibn Zohr University, Morocco</small></div>
+          <div class="member"><b>Prof. Ahlam Qafas</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
+          <div class="member"><b>Prof. Mohamed Bouasabah</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Prof. Mourad Tahori</b><small>Faculty of Law, Economics, and Social Science, El Jadida, Morocco</small></div>
+          <div class="member"><b>Prof. Fatima Zahra Moussaid</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
+          <div class="member"><b>Houda El Ferrachi</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
+          <div class="member"><b>Prof. Kaboul El Yamani</b><small>Faculty of Law, Economics, and Social Science, Casablanca, Hassan II University, Morocco</small></div>
+        </div>
+
+        <div style="height:50px"></div>
+
+        <div class="section-head">
+          <div>
+            <span class="kicker">Organisation</span>
+            <h2>Organising Committee</h2>
+          </div>
+        </div>
+
+        <div class="committee" id="organizationCommittee">
+          <div class="member"><b>Prof. Ahlam Qafas</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
+          <div class="member"><b>Prof. Mohamed Bouasabah</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
+          <div class="member"><b>Prof. Fatima Zahra Moussaid</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
+          <div class="member"><b>Prof. Houda El Ferrachi</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
+          <div class="member"><b>Prof. Kaboul El Yamani</b><small>Faculty of Law, Economics, and Social Science, Ain Chock, Casablanca, Morocco</small></div>
+          <div class="member"><b>Prof. Mourad Tahori</b><small>FSJES, El Jadida, Morocco</small></div>
+          <div class="member"><b>Dr. Mohamed Abdedaime</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
+          <div class="member"><b>Dr. Boukhraisse Hafsa</b><small>ENCG National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Dr. Imane Cheragui</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programme">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Programme & Chairs</span>
+            <h2>Programme & Chairs</h2>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="glass card">
+            <h3>Honorary Chairs</h3>
+            <ul>
+              <li><b>Prof. Blaid BOUGADIR</b><br>President of Cadi Ayyad University, Marrakesh, Morocco.</li>
+              <li><b>Prof. Khalid El KALAY</b><br>Higher School of Technology, Essaouira.</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Conference Chairs</h3>
+            <ul>
+              <li><b>Prof. Azidine Guezzaz</b><br>EST Essaouira, Morocco.</li>
+              <li><b>Prof. Ahlam Qafas</b><br>ENCG, Ibn Tofail University, Kenitra, Morocco.</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Conference Programme</h3>
+            <p>The detailed scientific programme will be announced soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="registration">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Registration Fees</span>
+            <h2>Registration</h2>
+          </div>
+        </div>
+
+        <div class="glass card registration-card">
+          <p class="lead">
+            All participants are required to register in order to attend the conference and present their work.
+            Registration fees cover access to all scientific sessions, conference materials, coffee breaks, and
+            networking events.
+          </p>
+
+          <div class="registration-table-wrap">
+            <table class="registration-table">
+              <thead>
+                <tr>
+                  <th>Registration category</th>
+                  <th>
+                    Early Bird Price Until
+                    <span>August 31, 2026</span>
+                  </th>
+                  <th>
+                    Standard Price from
+                    <span>August 31, 2026</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Doctoral (PhD) Students</td>
+                  <td><b>1,500 MAD</b></td>
+                  <td><b>2,000 MAD</b></td>
+                </tr>
+                <tr>
+                  <td>Academics &amp; Professionals</td>
+                  <td><b>2,000 MAD</b></td>
+                  <td><b>3,000 MAD</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="venue">
+      <div class="wrap venue">
+        <div class="glass card">
+          <span class="kicker">Venue</span>
+          <h2>Higher School of Technics</h2>
+          <p class="lead">Ghazoua, Essaouira, Morocco</p>
+
+        
+          <p>
+            We look forward to welcoming you to Essaouira in October 22-24 2026.
+            Together, let us build the intellectual foundations of a resilient and sustainable future.
+          </p>
+        </div>
+
+        <div class="map glass">📍 Essaouira</div>
+      </div>
+    </section>
+
+
+   <section id="contactus">
+      <div class="wrap venue">
+        <div class="glass card">
+      
+          <h3>Contact</h3>
+          For any information contact us :
+          <p>conference.aisegf@gmail.com</p>
+
+        
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+  </main>
+
+
+
+<button class="top" id="top">↑</button>
+
+<script>
+const speakers=[['Mustapha Rachidi','Universidade Federal de Mato Grosso do Sul. Campo Grande - Brazil'],
+ ['Prof. Mohamed Behnassi','Economic, Social and Environmental Council & Ibn Zohr University, Agadir, Morocco'],
+ ['Fatima Arib','Faculty of Law, Economical and Humains Sciences, Cadi Ayyad, Marrakesh, Morocco'],['Azidine Guezaz','Higher School of Technology, Cadi Ayyad, Essaouira, Morocco']];
+document.getElementById('people').innerHTML=speakers.map(p=>`
+  <div class="person glass"><div class="avatar">${p[0].split(' ').map(x=>x[0]).slice(0,2).join('')}</div><b>${p[0]}</b><div class="role">${p[1]}</div></div>`).join('');
+
+
+
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab,.agenda').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active'); document.getElementById(btn.dataset.tab).classList.add('active');
+  }
+});
+const topBtn=document.getElementById('top');
+window.onscroll=()=>{topBtn.style.display=scrollY>500?'block':'none'};
+topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
+if(menuBtn){
+  menuBtn.onclick=()=>navLinks.classList.toggle('show');
+  navLinks.querySelectorAll('a').forEach(a=>a.onclick=()=>navLinks.classList.remove('show'));
+}
+
+</script>
+</body>
+</html>
