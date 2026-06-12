@@ -118,7 +118,12 @@
     .partners{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.partner{min-height:120px;display:grid;place-items:center;text-align:center;padding:16px;font-weight:900}
     .committee{columns:3 240px;column-gap:18px}.member{break-inside:avoid;margin:0 0 10px;padding:13px 14px;border-radius:14px;background:rgba(255, 255, 255, 0.815);border:1px solid var(--line)}.member small{display:block;color: #4f0232;}
     .venue{display:grid;grid-template-columns:1fr 1fr;gap:18px}.map{min-height:310px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(246,196,83,.16),rgba(37,208,166,.12));font-size:54px}
-    footer{border-top:1px solid var(--line);padding:34px 0;color: #4f0232;background:rgba(0,0,0,.35)}.foot{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:20px}.top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:0;border-radius:50%;background:var(--accent);color:#04101d;font-weight:900;cursor:pointer;display:none}
+    
+    /* Footer styles */
+    footer{border-top:1px solid var(--line);padding:34px 0;color: #4f0232;background:rgba(0,0,0,.35)}
+    .footer-image{max-width:100%;height:auto;display:block;margin:0 auto;border-radius:12px}
+    
+    .foot{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:20px}.top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:0;border-radius:50%;background:var(--accent);color:#04101d;font-weight:900;cursor:pointer;display:none}
     @media(max-width:900px){.hero-grid,.about,.venue{grid-template-columns:1fr}.grid,.people,.partners{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr}.row{grid-template-columns:1fr}h1{letter-spacing:-2px}}
 
     .registration-card .lead{max-width:100%;margin-top:0;color: #4f0232;}
@@ -580,12 +585,13 @@
       </div>
     </section>
 
-
-
-
   </main>
 
-
+  <footer>
+    <div class="wrap">
+      <img src="footer.jpg" alt="AISEGF 2026 Footer Banner" class="footer-image" />
+    </div>
+  </footer>
 
 <button class="top" id="top">↑</button>
 
