@@ -17,8 +17,7 @@
       color: 0;
       line-height:1.6;
       background:
-        linear-gradient(rgba(6, 20, 38, 0), rgba(6, 20, 38, 0)),
-        url("hero.png");
+        linear-gradient(rgb(6 20 38 / 57%), rgba(6, 20, 38, 0)), url(hero.png);
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
@@ -37,7 +36,7 @@
     border-radius: 999px;
     background: rgba(255, 255, 255, .06);
     border: 1px solid transparent;
-    color: #3d1e10;
+    color: #ffffff;
     font: inherit;
     cursor: pointer;
     transition: .2s;
@@ -59,7 +58,7 @@
     border-radius: 999px;
     background: rgba(255, 255, 255, .06);
     border: 1px solid transparent;
-    color: #3d1e10;
+    color: #ffffff;
     font: inherit;
     cursor: pointer;
     transition: .2s;
@@ -100,13 +99,19 @@
     }
     
     
-    .meta{color: #4f0232;font-weight:600;margin-bottom:26px}.btns{display:flex;gap:12px;flex-wrap:wrap}
+    .meta{color: #ffffff;font-weight:600;margin-bottom:26px}.btns{display:flex;gap:12px;flex-wrap:wrap}
     .btn{padding:13px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.09);font-weight:800}
     .btn.primary{background:linear-gradient(135deg,var(--accent),#7af3d2);color:#04101d;border:0}.btn.gold{background:linear-gradient(135deg,var(--accent2),#ffe09a);color:#1d1604;border:0}
-    .glass{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);backdrop-filter:blur(16px)}
-    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.stat{padding:22px}.stat b{font-size:36px;color:#fff}.stat p{margin:4px 0 0;color: #4f0232;}
-    section{padding:62px 0}.section-head{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:24px}
-    .kicker{color:var(--accent);font-weight:900;text-transform:uppercase;font-size:13px;letter-spacing:1.5px}h2{font-size:clamp(30px,4vw,52px);line-height:1;margin:6px 0 0;letter-spacing:-1.5px}.lead{color: #4f0232;max-width:720px}
+    .glass{background:white;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.stat{padding:22px}.stat b{font-size:36px;color:#000}.stat p{margin:4px 0 0;color: #4f0232;}
+    section{padding:62px 0}.section-head{color:#fff ;display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:24px}
+    .kicker{
+      color: #ffda8b;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    }h2{font-size:clamp(30px,4vw,52px);line-height:1;margin:6px 0 0;letter-spacing:-1.5px}.lead{color: #4f0232;max-width:720px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px}.card h3{margin:0 0 10px;font-size:21px}.card p,.card li{color: #4f0232;}.card ul{padding-left:20px;margin:12px 0 0}
     .about{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.chip{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#e8f3ff;background:rgba(255,255,255,.06)}
     .poster{min-height:520px;display:grid;place-items:center;text-align:center;background:
@@ -114,7 +119,23 @@
       repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 14px);border:1px dashed rgba(255,255,255,.28)}
     .poster h3{font-size:46px;line-height:1;margin:0}.tabs{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}.tab{cursor:pointer;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.07);color: #4f0232;font-weight:800}.tab.active{background:var(--accent);color:#04101d}
     .agenda{display:none}.agenda.active{display:block}.table{overflow:auto}.row{display:grid;grid-template-columns:150px 1fr 1.3fr;gap:12px;padding:14px;border-top:1px solid var(--line)}.row:first-child{border-top:0}.time{color:var(--accent2);font-weight:900}
-    .people{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.person{text-align:center;padding:18px}.avatar{width:86px;height:86px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--blue));display:grid;place-items:center;color:#061426;font-size:30px;font-weight:900}.role{color: #4f0232;font-size:14px}
+    .people{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.person{text-align:center;padding:18px}
+    
+    .avatar{
+      width:134px;
+      height:134px;
+      margin:0 auto 12px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--blue));
+      display:grid;
+      place-items:center;
+      color:#061426;
+      font-size:30px;
+      font-weight:900;
+      overflow:hidden;
+    }
+    
+    .role{color: #4f0232;font-size:14px}
     .partners{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.partner{min-height:120px;display:grid;place-items:center;text-align:center;padding:16px;font-weight:900}
     .committee{columns:3 240px;column-gap:18px}.member{break-inside:avoid;margin:0 0 10px;padding:13px 14px;border-radius:14px;background:rgba(255, 255, 255, 0.815);border:1px solid var(--line)}.member small{display:block;color: #4f0232;}
     .venue{display:grid;grid-template-columns:1fr 1fr;gap:18px}.map{min-height:310px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(246,196,83,.16),rgba(37,208,166,.12));font-size:54px}
@@ -199,8 +220,7 @@
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div>
-          <div class="pill">FIRST EDITION</div>
-          <p class="meta">Higher School of Technology · Essaouira, Maroc</p>
+
           <h1>AISEGF<span>’26</span></h1>
           <p class="subtitle">International Interdisciplinary Conference on Artificial Intelligence for Sustainable
             Economy and Green Finance</p>
@@ -218,7 +238,7 @@
           <div class="stat glass"><b>8</b>
             <p>THEMATIC TRACKS</p>
           </div>
-          <div class="stat glass"><b>30 June</b>
+          <div class="stat glass"><b>July 10</b>
             <p>Submission deadline</p>
           </div>
         </div>
@@ -273,7 +293,7 @@
           <div class="glass card">
             <h3>Track 2</h3>
             <p><b>Green Finance, Climate Risk, and Sustainable Investment</b></p>
-            <p>The architecture of global finance is undergoing a profound structural transformation as climate risk is
+            <p>The architecture of global finance is undergoing a Pround structural transformation as climate risk is
               repriced across asset classes and jurisdictions. This track invites contributions on green bond
               optimisation and sustainable debt instruments, carbon market modelling and emissions trading dynamics,
               climate risk forecasting using AI and machine ...</p>
@@ -351,20 +371,21 @@
           <table style="width:100%;font-size:18px;border-collapse:collapse">
             <tr>
               <td style="padding:12px">Paper Submission Deadline</td>
-              <td style="padding:12px"><b>June 30, 2026</b></td>
-            </tr>
-            <tr>
-              <td style="padding:12px">Acceptance Notification</td>
               <td style="padding:12px"><b>July 10, 2026</b></td>
             </tr>
             <tr>
-              <td style="padding:12px">Camera-Ready Submission</td>
-              <td style="padding:12px"><b>July 30, 2026</b></td>
+              <td style="padding:12px">Acceptance Notification</td>
+              <td style="padding:12px"><b>July 20, 2026</b></td>
+            </tr>
+             <tr>
+              <td style="padding:12px">Registration Deadline</td>
+              <td style="padding:12px"><b>August 15, 2026</b></td>
             </tr>
             <tr>
-              <td style="padding:12px">Registration Deadline</td>
-              <td style="padding:12px"><b>July 30, 2026</b></td>
+              <td style="padding:12px">Camera-Ready Submission</td>
+              <td style="padding:12px"><b>August 20, 2026</b></td>
             </tr>
+           
             <tr>
               <td style="padding:12px">Conference Dates</td>
               <td style="padding:12px"><b>October 22–24, 2026</b></td>
@@ -428,21 +449,41 @@
         </div>
 
         <div class="committee" id="scientificCommittee">
-          <div class="member"><b>Prof. Azidine Guezzaz</b><small>Higher School of Technics, Essaouira, Cadi Ayyad University, Morocco</small></div>
-          <div class="member"><b>Prof. Mourade Azerour</b><small>Faculty of Technics and Sciences, Errachidia, Moulay Ismail University, Morocco</small></div>
-          <div class="member"><b>Prof. Jamal Mabrouki</b><small>Faculty of Sciences, Mohammed V University, Rabat, Morocco</small></div>
-          <div class="member"><b>Prof. Said Benkirane</b><small>Higher School of Technics, Cadi Ayyad University, Morocco</small></div>
-          <div class="member"><b>Prof. Mouaad Mohy-Eddine</b><small>National School of Arts and Metiers, Hassan II University, Casablanca, Morocco</small></div>
-          <div class="member"><b>Prof. Abdellah Aberda</b><small>Faculty of Law, Economics, and Social Science, Settat, Hassan 1st University, Morocco</small></div>
-          <div class="member"><b>Prof. Lhoucine Ikkou</b><small>Faculty of Economics and Management, Guelmim, Ibn Zohr University, Morocco</small></div>
-          <div class="member"><b>Prof. Omar Zirari</b><small>Faculty of Law, Economics, and Social Science, Settat, University Hassan 1st, Morocco</small></div>
-          <div class="member"><b>Prof. Mohamed Behnassi</b><small>Faculty of Law, Economics, and Social Science, Agadir, Ibn Zohr University, Morocco</small></div>
-          <div class="member"><b>Prof. Ahlam Qafas</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
-          <div class="member"><b>Prof. Mohamed Bouasabah</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Kenitra, Morocco</small></div>
-          <div class="member"><b>Prof. Mourad Tahori</b><small>Faculty of Law, Economics, and Social Science, El Jadida, Morocco</small></div>
-          <div class="member"><b>Prof. Fatima Zahra Moussaid</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
+          <div class="member"><b>Pr. Azidine Guezzaz</b><small>Higher School of Technics, Essaouira, Cadi Ayyad University, Morocco</small></div>
+          <div class="member"><b>Pr. Mourade Azerour</b><small>Faculty of Technics and Sciences, Errachidia, Moulay Ismail University, Morocco</small></div>
+          <div class="member"><b>Pr. Jamal Mabrouki</b><small>Faculty of Sciences, Mohammed V University, Rabat, Morocco</small></div>
+          <div class="member"><b>Pr. Said Benkirane</b><small>Higher School of Technics, Cadi Ayyad University, Morocco</small></div>
+          <div class="member"><b>Pr. Mouaad Mohy-Eddine</b><small>National School of Arts and Metiers, Hassan II University, Casablanca, Morocco</small></div>
+          <div class="member"><b>Pr. Abdellah Aberda</b><small>Faculty of Law, Economics, and Social Science, Settat, Hassan 1st University, Morocco</small></div>
+          <div class="member"><b>Pr. Lhoucine Ikkou</b><small>Faculty of Economics and Management, Guelmim, Ibn Zohr University, Morocco</small></div>
+          <div class="member"><b>Pr. Omar Zirari</b><small>Faculty of Law, Economics, and Social Science, Settat, University Hassan 1st, Morocco</small></div>
+          <div class="member"><b>Pr. Mohamed Behnassi</b><small>Faculty of Law, Economics, and Social Science, Agadir, Ibn Zohr University, Morocco</small></div>
+          <div class="member"><b>Pr. Ahlam Qafas</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
+          <div class="member"><b>Pr. Mohamed Bouasabah</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Mourad Tahori</b><small>Faculty of Law, Economics, and Social Science, El Jadida, Morocco</small></div>
+          <div class="member"><b>Pr. Fatima Zahra Moussaid</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
           <div class="member"><b>Houda El Ferrachi</b><small>National School of Business and Management, Kenitra, Ibn Tofail University, Morocco</small></div>
-          <div class="member"><b>Prof. Kaboul El Yamani</b><small>Faculty of Law, Economics, and Social Science, Casablanca, Hassan II University, Morocco</small></div>
+          <div class="member"><b>Pr. Kaboul El Yamani</b><small>Faculty of Law, Economics, and Social Science, Casablanca, Hassan II University, Morocco</small></div>
+        <div class="member"><b>Pr. Moulay Ibrahim Sedra</b><small>École Normale Supérieure (ENS), Meknes, Morocco</small></div>
+          <div class="member"><b>Pr. Said Assal</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Zidane Lamdaghri</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Aziz Babounia</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Lotfi Benazzou</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Fatiha Benamar</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Karima Lahboub</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Rachida Allali</b><small>National School of Business and Management (ENCG), Casablanca, Morocco</small></div>
+          <div class="member"><b>Pr. Yassine Boudi</b><small>Faculty of Law, Economics, and Social Science (FSJES), El Jadida, Morocco</small></div>
+          <div class="member"><b>Pr. Hassan Diaab</b><small>Faculty of Commerce, Suez Canal University, Ismailia, Egypt</small></div>
+          <div class="member"><b>Pr. Maryam El Abboubi</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Fatiha El Agri</b><small>Moulay Ismail University – Polydisciplinary Faculty of Errachidia</small></div>
+          <div class="member"><b>Pr. Abdeslam El Moudden</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+          <div class="member"><b>Pr. Mohammed Karim</b><small>National School of Business and Management (ENCG), Casablanca, Morocco</small></div>
+          <div class="member"><b>Pr. Driss Mafamane</b><small>Faculty of Law, Economics, and Social Science (FSJES), Mohammed V University, Rabat, Morocco</small></div>
+          <div class="member"><b>Pr. Abdelhakim Qachar</b><small>Faculty of Law, Economics, and Social Science (FSJES), El Jadida, Morocco</small></div>
+          <div class="member"><b>Pr. Mustapha Rachidi</b><small>Federal University of Mato Grosso do Sul, Campo Grande, Brazil</small></div>
+          <div class="member"><b>Pr. Charaf Saidi</b><small>Faculty of Law, Economics, and Social Science (FSJES), Marrakech, Morocco</small></div>
+          <div class="member"><b>Pr. Yankhouba Seydi</b><small>Cheikh Anta Diop University of Dakar (UCAD), Dakar, Senegal</small></div>
+          <div class="member"><b>Pr. Abdellatif Taghzouti</b><small>National School of Business and Management (ENCG), Fes, Morocco</small></div>
         </div>
 
         <div style="height:50px"></div>
@@ -450,54 +491,55 @@
         <div class="section-head">
           <div>
             <span class="kicker">Organisation</span>
-            <h2>Organising Committee</h2>
+            <h2>Steering & Coordination Committee</h2>
           </div>
         </div>
 
-        <div class="committee" id="organizationCommittee">
-          <div class="member"><b>Prof. Ahlam Qafas</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
-          <div class="member"><b>Prof. Mohamed Bouasabah</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
-          <div class="member"><b>Prof. Fatima Zahra Moussaid</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
-          <div class="member"><b>Prof. Houda El Ferrachi</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
-          <div class="member"><b>Prof. Kaboul El Yamani</b><small>Faculty of Law, Economics, and Social Science, Ain Chock, Casablanca, Morocco</small></div>
-          <div class="member"><b>Prof. Mourad Tahori</b><small>FSJES, El Jadida, Morocco</small></div>
-          <div class="member"><b>Dr. Mohamed Abdedaime</b><small>National School of Business and Management, Kenitra, Morocco</small></div>
-          <div class="member"><b>Dr. Boukhraisse Hafsa</b><small>ENCG National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
-          <div class="member"><b>Dr. Imane Cheragui</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
-        </div>
-      </div>
+ <div class="committee" id="organizationCommittee">
+  <div class="member"><b>Pr. Ahlam Qafas</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Pr. Fatima Zahra Moussaid</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Pr. Mohamed Bouasabah</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Pr. Houda El Ferrachi</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Pr. Fatiha El Agri</b><small>Moulay Ismail University – Polydisciplinary Faculty of Errachidia</small></div>
+  <div class="member"><b>Pr. Mourad Tahori</b><small>Faculty of Law, Economics, and Social Science, El Jadida, Morocco</small></div>
+  <div class="member"><b>Dr. Omar Errousse</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Dr. Mohamed Abdedaime</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Ayoub Boudadene</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Boukhraisse Hafsa</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+  <div class="member"><b>Imane Chergui</b><small>National School of Business and Management, Ibn Tofail University, Kenitra, Morocco</small></div>
+</div>
     </section>
 
     <section id="programme">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="kicker">Programme & Chairs</span>
-            <h2>Programme & Chairs</h2>
+            <span class="kicker">Chairs</span>
+            <h2>Honorary Chairs</h2>
           </div>
         </div>
+        <div class="people" id="honoraryChairs"></div>
 
-        <div class="grid">
-          <div class="glass card">
-            <h3>Honorary Chairs</h3>
-            <ul>
-              <li><b>Prof. Blaid BOUGADIR</b><br>President of Cadi Ayyad University, Marrakesh, Morocco.</li>
-              <li><b>Prof. Khalid El KALAY</b><br>Higher School of Technology, Essaouira.</li>
-            </ul>
-          </div>
+        <div style="height:48px"></div>
 
-          <div class="glass card">
-            <h3>Conference Chairs</h3>
-            <ul>
-              <li><b>Prof. Azidine Guezzaz</b><br>EST Essaouira, Morocco.</li>
-              <li><b>Prof. Ahlam Qafas</b><br>ENCG, Ibn Tofail University, Kenitra, Morocco.</li>
-            </ul>
+        <div class="section-head">
+          <div>
+            <span class="kicker">Chairs</span>
+            <h2>Conference Chairs</h2>
           </div>
+        </div>
+        <div class="people" id="conferenceChairs"></div>
 
-          <div class="glass card">
-            <h3>Conference Programme</h3>
-            <p>The detailed scientific programme will be announced soon.</p>
+        <div style="height:48px"></div>
+
+        <div class="section-head">
+          <div>
+            <span class="kicker">Agenda</span>
+            <h2>Conference Programme</h2>
           </div>
+        </div>
+        <div class="glass card" style="padding: 30px;">
+          <p class="lead" style="margin: 0;">The detailed scientific programme will be announced soon.</p>
         </div>
       </div>
     </section>
@@ -541,7 +583,7 @@
                   <td><b>2,000 MAD</b></td>
                 </tr>
                 <tr>
-                  <td>Academics &amp; Professionals</td>
+                  <td>Academics &amp; Pressionals</td>
                   <td><b>2,000 MAD</b></td>
                   <td><b>3,000 MAD</b></td>
                 </tr>
@@ -597,11 +639,47 @@
 
 <script>
 const speakers=[['Mustapha Rachidi','Universidade Federal de Mato Grosso do Sul. Campo Grande - Brazil'],
- ['Prof. Mohamed Behnassi','Economic, Social and Environmental Council & Ibn Zohr University, Agadir, Morocco'],
+ ['Pr. Mohamed Behnassi','Economic, Social and Environmental Council & Ibn Zohr University, Agadir, Morocco'],
  ['Fatima Arib','Faculty of Law, Economical and Humains Sciences, Cadi Ayyad, Marrakesh, Morocco'],['Azidine Guezaz','Higher School of Technology, Cadi Ayyad, Essaouira, Morocco']];
-document.getElementById('people').innerHTML=speakers.map(p=>`
-  <div class="person glass"><div class="avatar">${p[0].split(' ').map(x=>x[0]).slice(0,2).join('')}</div><b>${p[0]}</b><div class="role">${p[1]}</div></div>`).join('');
 
+const honoraryChairs = [
+  ['Pr. Mohamed EBN TOUHAMI', 'President of Ibn Tofail University, Kenitra, Morocco'],
+  ['Pr. Blaid BOUGADIR', 'President of Cadi Ayyad University, Marrakesh, Morocco'],
+  ['Pr. Omar Taouab', 'Director of ENCGK, Ibn Tofail University of Kenitra, Morocco'],
+  ['Pr. Khalid El KALAY', 'Director of Higher School of Technology, Essaouira, Morocco']
+];
+
+const conferenceChairs = [
+  ['Pr. Fatima Zahra Moussaid', 'National School of Business and Management, Ibn Tofail University, Kenitra, Morocco'],
+  ['Pr. Ahlam Qafas', 'National School of Business and Management, Ibn Tofail University, Kenitra, Morocco']
+];
+
+// Extracts initials, skipping prefixes like Pr. or Dr.
+const getInitials = (name) => {
+  return name.replace(/^(Pr\.|Dr\.)\s+/i, '').split(' ').map(x => x[0]).slice(0, 2).join('').toUpperCase();
+};
+
+// Renders the list of people, attempting to load an image named [initials].jpeg
+// If the image fails to load, it falls back to the text initials
+const renderPeopleList = (list, elementId) => {
+  document.getElementById(elementId).innerHTML = list.map(p => {
+    const initials = getInitials(p[0]);
+    return `
+      <div class="person glass">
+        <div class="avatar">
+          <img src="${initials}.jpeg" alt="${p[0]}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.outerHTML='${initials}';">
+        </div>
+        <b>${p[0]}</b>
+        <div class="role">${p[1]}</div>
+      </div>
+    `;
+  }).join('');
+};
+
+// Render all sections
+renderPeopleList(speakers, 'people');
+renderPeopleList(honoraryChairs, 'honoraryChairs');
+renderPeopleList(conferenceChairs, 'conferenceChairs');
 
 
 document.querySelectorAll('.tab').forEach(btn=>{
